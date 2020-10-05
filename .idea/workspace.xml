@@ -1,15 +1,336 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="99fd5e60-508e-4d80-aaba-52189852b1d8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/generate-react-cli.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/phpTesst.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/bower.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/demo/1_b.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/demo/1_s.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/demo/2_b.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/demo/2_s.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/demo/3_b.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/demo/3_s.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/demo/4_b.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/demo/4_s.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/demo/5_b.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/demo/5_s.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/demo/ajax.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/demo/iframe.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/demo/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/dist/css/jquery.fancybox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/dist/helpers/css/jquery.fancybox-buttons.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/dist/helpers/css/jquery.fancybox-thumbs.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/dist/helpers/img/fancybox_buttons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/dist/helpers/js/jquery.fancybox-buttons.cjs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/dist/helpers/js/jquery.fancybox-buttons.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/dist/helpers/js/jquery.fancybox-media.cjs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/dist/helpers/js/jquery.fancybox-media.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/dist/helpers/js/jquery.fancybox-thumbs.cjs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/dist/helpers/js/jquery.fancybox-thumbs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/dist/helpers/scss/jquery.fancybox-buttons.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/dist/helpers/scss/jquery.fancybox-thumbs.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/dist/img/blank.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/dist/img/fancybox_loading.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/dist/img/fancybox_loading@2x.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/dist/img/fancybox_overlay.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/dist/img/fancybox_sprite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/dist/img/fancybox_sprite@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/dist/js/jquery.fancybox.cjs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/dist/js/jquery.fancybox.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/dist/js/jquery.fancybox.pack.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/dist/scss/jquery.fancybox.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/fancybox.jquery.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/lib/jquery-1.10.2.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/lib/jquery.mousewheel.pack.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/sprite.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/fancybox/test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/AUTHORS.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/bower.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/dist/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/dist/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/dist/jquery.min.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/dist/jquery.slim.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/dist/jquery.slim.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/dist/jquery.slim.min.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/external/sizzle/LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/external/sizzle/dist/sizzle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/external/sizzle/dist/sizzle.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/external/sizzle/dist/sizzle.min.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/ajax.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/ajax/jsonp.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/ajax/load.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/ajax/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/ajax/var/location.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/ajax/var/nonce.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/ajax/var/rquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/ajax/xhr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/attributes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/attributes/attr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/attributes/classes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/attributes/prop.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/attributes/support.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/attributes/val.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/callbacks.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/core.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/core/DOMEval.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/core/access.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/core/camelCase.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/core/init.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/core/isAttached.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/core/nodeName.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/core/parseHTML.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/core/parseXML.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/core/ready-no-deferred.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/core/ready.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/core/readyException.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/core/stripAndCollapse.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/core/support.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/core/toType.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/core/var/rsingleTag.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/css.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/css/addGetHookIf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/css/adjustCSS.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/css/curCSS.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/css/finalPropName.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/css/hiddenVisibleSelectors.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/css/showHide.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/css/support.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/css/var/cssExpand.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/css/var/getStyles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/css/var/isHiddenWithinTree.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/css/var/rboxStyle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/css/var/rnumnonpx.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/css/var/swap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/data.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/data/Data.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/data/var/acceptData.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/data/var/dataPriv.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/data/var/dataUser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/deferred.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/deferred/exceptionHook.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/deprecated.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/deprecated/ajax-event-alias.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/deprecated/event.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/dimensions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/effects.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/effects/Tween.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/effects/animatedSelector.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/event.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/event/focusin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/event/support.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/event/trigger.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/exports/amd.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/exports/global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/manipulation.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/manipulation/_evalUrl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/manipulation/buildFragment.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/manipulation/getAll.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/manipulation/setGlobalEval.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/manipulation/support.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/manipulation/var/rscriptType.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/manipulation/var/rtagName.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/manipulation/wrapMap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/offset.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/queue.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/queue/delay.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/selector-native.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/selector-sizzle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/selector.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/serialize.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/traversing.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/traversing/findFilter.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/traversing/var/dir.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/traversing/var/rneedsContext.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/traversing/var/siblings.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/var/ObjectFunctionString.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/var/arr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/var/class2type.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/var/document.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/var/documentElement.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/var/flat.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/var/fnToString.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/var/getProto.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/var/hasOwn.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/var/indexOf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/var/isFunction.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/var/isWindow.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/var/pnum.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/var/push.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/var/rcheckableType.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/var/rcssNum.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/var/rnothtmlwhite.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/var/slice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/var/support.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/var/toString.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scripts/jquery/src/wrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/EndPoints.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/AppBarComponent/AppBarComponent.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/AppBarComponent/AppBarComponent.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/AppBarComponent/AppBarComponent.lazy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/AppBarComponent/AppBarComponent.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/DrawerComponent/DrawerComponent.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/DrawerComponent/DrawerComponent.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/DrawerComponent/DrawerComponent.lazy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/DrawerComponent/DrawerComponent.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/FileCardComponent/FileCardComponent.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/FileCardComponent/FileCardComponent.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/FileCardComponent/FileCardComponent.lazy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/FileCardComponent/FileCardComponent.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/FolderCardComponent/FolderCardComponent.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/FolderCardComponent/FolderCardComponent.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/FolderCardComponent/FolderCardComponent.lazy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/FolderCardComponent/FolderCardComponent.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/LoginView/LoginView.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/LoginView/LoginView.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/LoginView/LoginView.lazy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/LoginView/LoginView.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/SharedView/SharedView.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/SharedView/SharedView.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/SharedView/SharedView.lazy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/SharedView/SharedView.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/functions/AfterAuthFunctions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/functions/Auth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/functions/FilesFolders.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/functions/IconDictionary.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/functions/Misc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/functions/StorageIndex.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/HomeComponent/HomeComponent.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/HomeComponent/HomeComponent.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/HomeComponent/HomeComponent.lazy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/HomeComponent/HomeComponent.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
   <component name="ComposerSettings">
     <execution>
       <executable />
     </execution>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1iH5kL6lcj2ek9JWo1VH6M2Vxg4" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/scripts" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Projects\phpstormprojects\kabeersdrive\public\scripts" />
+      <recent name="E:\Projects\phpstormprojects\kabeersdrive\src\components" />
+      <recent name="E:\Projects\phpstormprojects\kabeersdrive\src" />
+      <recent name="E:\Projects\phpstormprojects\kabeersdrive\src\views" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.npm start">
+    <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
+    <configuration name="npm start" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="99fd5e60-508e-4d80-aaba-52189852b1d8" name="Default Changelist" comment="" />
+      <created>1601551818419</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1601551818419</updated>
+      <workItem from="1601551822247" duration="66716000" />
+      <workItem from="1601910671661" duration="521000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="275" y="22" key="#ESLint" timestamp="1601554935747">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="22" key="#ESLint/0.0.1366.728@0.0.1366.728" timestamp="1601554935747" />
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1601911223851">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1601911223851" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1601911223850">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1601911223850" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1601911223850">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1601911223850" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1601911223850">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1601911223850" />
+    <state x="379" y="96" width="607" height="536" key="find.popup" timestamp="1601646926319">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="379" y="96" width="607" height="536" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1601646926319" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1601737228365">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1601737228365" />
   </component>
 </project>
