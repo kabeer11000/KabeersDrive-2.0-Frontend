@@ -2,11 +2,14 @@ import {endPoints} from "../api/EndPoints";
 import Fuse from "fuse.js";
 import {fuseOptions} from "./Misc";
 
-export const getFolderById = async (id, abortController = new AbortController) => await fetch(endPoints.getFolderByFake(id), {
+export const getFolderById = async (id, token, abortController = new AbortController) => await fetch(endPoints.getFolderById(id), {
+    headers: new Headers({
+        "Authorization": `Bearer ${token}`
+    }),
     signal: abortController.signal
 }).then(res => res.json());
 export const changeFileLinkSharing = async (id, method) => await fetch(endPoints.changeFileSharingFake(id, method));
-export const searchUserFiles = async (q, folderId = null) => folderId ? fetch(endPoints.userGetAllContentsFolder(folderId))
+export const searchUserFiles = async (q, folderId = null) => folderId ? fetch(endPoints.userGetAllContentsFolder(folderId), {})
     .then(res => res.json())
     .then((res) => ({
         files: new Fuse(res.items.files, fuseOptions.files).search(q),

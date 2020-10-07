@@ -61,16 +61,17 @@ export const detectIcon = (mime) => {
     }
 };
 export const detectMime = (file) => {
+    const driveRawPath = `http://drive.hosted-kabeersnetwork.unaux.com/user-files`;
     switch (true) {
         case IconDictionary.image.includes(file.mime):
             return {
                 "data-type": "image",
-                "data-src": file.path
+                "data-src": `${driveRawPath}/${file.path}`
             };
         case IconDictionary.video.includes(file.mime):
             return {
                 "data-type": "video",
-                "data-src": file.path
+                "data-src": `${driveRawPath}/${file.path}`
             };
         case IconDictionary.code.includes(file.mime):
             return {

@@ -20,7 +20,7 @@ const FolderCardComponent = pure((props) => {
             <CardContent className={'py-0'}>
                 <div className={"d-flex"}>
                     <Typography noWrap gutterBottom className={`text-truncate mt-2`}>
-                        <IconButton><Folder/></IconButton> {props.item.name}
+                        <IconButton><Folder/></IconButton> {props.item.metaData.name}
                     </Typography>
                     <IconButton><MoreVert/></IconButton>
                 </div>
@@ -35,17 +35,17 @@ FolderCardComponent.defaultProps = {};
 
 
 const FoldersComponent = (props) => {
-    const [contents, setContents] = React.useState(props.files);
+    const [contents, setContents] = React.useState(props.folders);
     return (
         <React.Fragment>
             <Grid container
                   direction="row"
                   alignItems="flex-start">
                 {
-                    contents ? contents["Folders"].map((file, index) => (
+                    contents ? contents.map((folder, index) => (
                         <Grid sm={4} md={4} xs={12} item key={index}>
                             <FolderCardComponent
-                                item={file}/>
+                                item={folder}/>
                         </Grid>)) : null
                 }
             </Grid>

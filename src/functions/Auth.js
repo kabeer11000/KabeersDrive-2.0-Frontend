@@ -1,6 +1,4 @@
 import {endPoints} from "../api/EndPoints";
-import {storageIndex} from "./StorageIndex";
-import AfterAuthFunctions from "./AfterAuthFunctions";
 
 const cookies = {
     getCookie(e) {
@@ -9,8 +7,7 @@ const cookies = {
             if (0 === r.indexOf(t)) return r.substring(t.length, r.length);
         }
         return "";
-    },
-    setCookie(e, t, o) {
+    }, setCookie(e, t, o) {
         const n = new Date;
         n.setTime(n.getTime() + 24 * o * 60 * 60 * 1e3);
         const r = "expires=" + n.toUTCString();
@@ -18,22 +15,21 @@ const cookies = {
     }
 };
 export const initAuth = async () => {
-    let userData = cookies.getCookie("9b8eec254fa16696b291f984546528d8");
-    if (!userData) {
-        window.location.href = endPoints.internalLoginComponentRoute;
+    let token = cookies.getCookie("token");
+    if (!token) {
+        window.location.href = endPoints.authRedirect;
         return new Error("Failed to Auth, Redirecting");
     }
 
-    userData = JSON.parse(userData);
-    await fetch(endPoints.loginByUuid, {
-        headers: {
-            "Authorization": "Basic " + btoa(userData.username + ":" + userData.password)
-        },
-    }).then(res => res.ok ? res.json() : null);
+    token = JSON.parse(token);
+    if (Math.floor(((Date.now() - token.exp) / 1000) / 60) > 120) { // Two Hours
+        return await fetch(endPoints.refreshToken, {}, 5000).then(res => res.ok ? res.json() : null);
+    } // Expired
     return token.token; // Return Token
 };
 
 (async () => {
+    /*
     if (!cookies.getCookie("user_data_token")) return window.location.href = endPoints.authRedirect;
     if (localStorage.getItem(storageIndex.userData) === null || undefined) return fetch(endPoints.getUserData, {
         headers: new Headers({
@@ -45,4 +41,6 @@ export const initAuth = async () => {
         .catch(e => console.log(e));
     else await AfterAuthFunctions();
     //Every thing is fine joe
+
+     */
 })();

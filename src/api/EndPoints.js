@@ -3,7 +3,7 @@ export const hostName = `${window.location.protocol}//${window.location.hostname
 export const Proxy = `https://kabeersmusic.herokuapp.com/proxy/`;
 
 export const endPoints = {
-    getFolderById: id => `http://drive.hosted-kabeersnetwork.unaux.com/server/api/folder.php?id=${id}`,
+    getFolderById: id => `${hostName}/api/get/folder/${id ? id : "b4000376114184b38e2f00e43b070a9fe239457d"}`,
     getFolderByFake: id => `https://raw.githubusercontent.com/kabeer11000/sample-response/master/Drive/folder.json`,
     changeFileSharing: (id, method) => `http://drive.hosted-kabeersnetwork.unaux.com/server/files-server.php?share=${id}&ShareN=${+method}`,
     changeFileSharingFake: (id, method) => `https://cdn.jsdelivr.net/gh/kabeer11000/sample-response@master/Drive/folder.json`,
@@ -15,6 +15,10 @@ export const endPoints = {
     userGetAllContentsMyDrive: `http://drive.hosted-kabeersnetwork.unaux.com/server/api/search.php?q=filter:all`,
     userGetAllContentsFolder: (id) => `http://drive.hosted-kabeersnetwork.unaux.com/server/api/search.php?q=filter:all&folder=${id}`,
     userSearchContentsMyDrive: `http://drive.hosted-kabeersnetwork.unaux.com/server/api/search.php?q=filter:all`,
+
     loginByUuid: `http://drive.hosted-kabeersnetwork.unaux.com/server/api/login.php`,
     internalLoginComponentRoute: `/login`,
+    fileUpload: (folderId = null) => `${hostName}/api/upload/${folderId}`,
+    authRedirect: `${hostName}/auth/redirect`,
+    refreshToken: `${hostName}/auth/store/tokens/refresh`,
 };

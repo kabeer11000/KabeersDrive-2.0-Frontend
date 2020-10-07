@@ -26,14 +26,13 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 import {Hidden} from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
-//import {sortable} from "react-sortable";
 
 const FileCardComponent = pure((props) => {
     const isMobile = useMediaQuery(`@media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3)`);
     props.item.iconJSX = detectIcon(props.item["mime"]);
     return (
         <Card className={`bg-transparent ${isMobile ? "mx-0" : "mx-2 my-2"}`} elevation={0}
-              onClick={() => (console.log(props.item), props.setFileInfo(props.item))}>
+              onClick={() => props.setFileInfo(props.item)}>
             <Box width={"100%"}>
                 <ButtonBase>
                     <Paper style={{minWidth: 210, width: 210, height: 118}}>
@@ -82,7 +81,7 @@ const FilesComponent = (props) => {
                   direction="row"
                   alignItems="flex-start">
                 {
-                    contents ? contents.map((file, index) => (
+                    contents ? contents["Files"].map((file, index) => (
                             <Grid sm={3} md={3} xs={6} item key={index}>
                                 <FileCardComponent
                                     setFileInfo={setCurrentFileInfo}
@@ -121,7 +120,7 @@ const FilesComponent = (props) => {
                                     <ListItemIcon><GetApp/></ListItemIcon>
                                     <ListItemText primary={"Download"} secondary={`Download ${fileInfo.name}`}/>
                                 </ListItem>
-                                <ListItem button onClick={() => props.handleFileDelete(fileInfo.id)}>
+                                <ListItem button>
                                     <ListItemIcon><Delete/></ListItemIcon>
                                     <ListItemText primary={"Delete"} secondary={`Delete ${fileInfo.name}`}/>
                                 </ListItem>
@@ -147,27 +146,3 @@ const FilesComponent = (props) => {
 FilesComponent.propTypes = {};
 FilesComponent.defaultProps = {};
 export default pure(FilesComponent);
-/*
-        {
-            props.item.thumbnail ?
-                <img style={{width: 210, height: 118}} alt={props.item.name} src={props.item.thumbnail}/> :
-                <Skeleton variant="rect" width={210} height={118}/>
-        }
-
-    <Box width={"100%"}>
-        <ButtonBase>
-            <Skeleton variant="rect" width={210} height={118} />
-        </ButtonBase>
-        <Box pr={2}>
-            <Typography noWrap gutterBottom variant="body2" className={`text-truncate`}>
-                {props.item.name}
-            </Typography>
-            <Typography display="block" variant="caption" color="textSecondary" className={`text-truncate`}>
-                {"item.channel"}
-            </Typography>
-            <Typography variant="caption" color="textSecondary" className={`text-truncate`}>
-                {`${props.item.mime} • ${props.item.dateCreated}`}
-            </Typography>
-        </Box>
-    </Box>
- */
