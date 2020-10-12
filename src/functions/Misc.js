@@ -45,3 +45,8 @@ export const fuseOptions = {
         ]
     }
 };
+export const makeBody = (obj) => Object.keys(obj).reduce(function (a, k) {
+    a.push(k + '=' + encodeURIComponent(obj[k]));
+    return a;
+}, []).join('&');
+export const toUrlEncoded = obj => Object.keys(obj).map(k => encodeURIComponent(k) + '=' + encodeURIComponent(obj[k])).join('&');

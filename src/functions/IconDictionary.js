@@ -42,19 +42,19 @@ export const IconDictionary = {
     ],
     none: []
 };
-export const detectIcon = (mime) => {
-    switch (true) {
-        case IconDictionary.image.includes(mime):
+export const detectIcon = (type) => {
+    switch (type) {
+        case "image":
             return <Image/>;
-        case IconDictionary.video.includes(mime):
+        case "video":
             return <Movie/>;
-        case IconDictionary.code.includes(mime):
+        case "code":
             return <Code/>;
-        case IconDictionary.doc.includes(mime):
+        case "document":
             return <InsertDriveFile/>;
-        case IconDictionary.txt.includes(mime):
+        case "text":
             return <Subject/>;
-        case IconDictionary.pdf.includes(mime):
+        case "pdf":
             return <PictureAsPdf/>;
         default:
             return <BrokenImage/>;

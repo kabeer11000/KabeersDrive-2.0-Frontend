@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
         margin: 4,
     },
 }));
-const HideOnScroll = (props = {...props, direction: "down", appear: false}) => {
+export const HideOnScroll = (props = {...props, direction: "down", appear: false}) => {
     const {children, window} = props;
     const trigger = useScrollTrigger({target: window ? window() : undefined});
     return (
@@ -105,7 +105,7 @@ const AppBarComponent = (props) => {
                                            style={{
                                                width: "90vw",
                                                maxWidth: "90vw",
-                                               maxHeight: "30vh",
+                                               maxHeight: "82.5vh",
                                                overflow: "hidden",
                                                zIndex: "5"
                                            }}>

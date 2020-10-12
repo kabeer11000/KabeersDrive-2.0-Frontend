@@ -9,9 +9,14 @@ import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import DrawerComponent from "./components/DrawerComponent/DrawerComponent.lazy";
 import UploadComponent from "./views/UploadComponent/UploadComponent.lazy";
-import Fab from "@material-ui/core/Fab";
 import {CloudUpload} from "@material-ui/icons";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import FileViewer from "./components/FileViewer/FileViewer.lazy";
+import IconButton from "@material-ui/core/IconButton";
+import FolderView from "./components/FolderView/FolderView.lazy";
+import {DialogProvider} from "muibox";
+import {SnackbarProvider} from "notistack";
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -61,22 +66,34 @@ const App = (props) => {
 
     return (
         <MuiThemeProvider theme={theme}>
-            <CssBaseline/>
-            <Router>
-                <DrawerComponent {...stateFunctions}>
-                    <React.Fragment>
-                        <Route path={"/"} render={() => <AppBarComponent {...stateFunctions}/>}/>
-                        <Route exact path={["/", "/home"]} component={HomeComponent}/>
-                        <Route exact path={["/upload"]} component={UploadComponent}/>
-                    </React.Fragment>
-                    <UploadComponent onClose={handleCastDialogClose} open={castDialogOpen}/>
-                    <Fab onClick={handleCastDialogClickOpen} className={classes.fab}>
-                        <CloudUpload/>
-                    </Fab>
-                </DrawerComponent>
-            </Router>
+            <SnackbarProvider maxSnack={1}>
+                <CssBaseline/>
+                <Router>
+                    <DrawerComponent {...stateFunctions}>
+                        <React.Fragment>
+                            <Route path={["/", "/home"]} exact={true}
+                                   render={() => <AppBarComponent {...stateFunctions}/>}/>
+                            <DialogProvider>
+                                <Route exact path={["/", "/home"]} component={HomeComponent}/>
+                                <Route exact path={["/upload"]} component={UploadComponent}/>
+                                <Route exact path={["/view/:id"]} component={FileViewer}/>
+                                <Route exact path={"/folder/:id"} component={FolderView}/>
+                            </DialogProvider>
+                        </React.Fragment>
+                        <UploadComponent onClose={handleCastDialogClose} open={castDialogOpen}/>
+                        <IconButton className={"d-none"} onClick={() => setCastDialogOpen(!castDialogOpen)}>
+                            <CloudUpload/>
+                        </IconButton>
+                    </DrawerComponent>
+                </Router>
+            </SnackbarProvider>
         </MuiThemeProvider>
     );
 };
 
 export default App;
+/*
+<Fab onClick={handleCastDialogClickOpen} className={classes.fab}>
+                        <CloudUpload/>
+                    </Fab>
+ */

@@ -5,7 +5,7 @@ export const Proxy = `https://kabeersmusic.herokuapp.com/proxy/`;
 export const endPoints = {
     getFolderById: id => `${hostName}/api/get/folder/${id ? id : "b4000376114184b38e2f00e43b070a9fe239457d"}`,
     getFolderByFake: id => `https://raw.githubusercontent.com/kabeer11000/sample-response/master/Drive/folder.json`,
-    changeFileSharing: (id, method) => `http://drive.hosted-kabeersnetwork.unaux.com/server/files-server.php?share=${id}&ShareN=${+method}`,
+    changeFileSharing: (id) => `${hostName}/api/sharing/file/${id}`,
     changeFileSharingFake: (id, method) => `https://cdn.jsdelivr.net/gh/kabeer11000/sample-response@master/Drive/folder.json`,
     noPreviewAvailable: (id) => `http://drive.hosted-kabeersnetwork.unaux.com/server/modal/no-preview.php?d=${id}`,
     textFileViewer: (id) => `http://drive.hosted-kabeersnetwork.unaux.com/uViewFile.php?id=${id}`,
@@ -21,4 +21,7 @@ export const endPoints = {
     fileUpload: (folderId = null) => `${hostName}/api/upload/${folderId}`,
     authRedirect: `${hostName}/auth/redirect`,
     refreshToken: `${hostName}/auth/store/tokens/refresh`,
+    getRecentFiles: (n = null) => `${hostName}/api/get/recent/file/${n ? n : ""}`,
+    getFileDetailsById: (id) => `${hostName}/api/get/file/${id}`,
+    createNewFolder: () => `${hostName}/api/create/new/folder`,
 };
