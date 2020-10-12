@@ -45,6 +45,43 @@ UploadingDialog.propTypes = {
     folderName: PropTypes.string.isRequired,
     open: PropTypes.bool.isRequired,
 };
+const AppBarComponent = (props) => (
+    <React.Fragment>
+        {
+            props.embedded ? null : <AppBar color="paper" position={"sticky"}>
+                <Toolbar>
+                    <IconButton
+                        onClick={() => props.folder.parents.length === 1 ? history.push('/home') : props.handleFolderChange(props.folder.immediateParent)}
+                        edge="start" color="inherit"
+                        aria-label="menu">
+                        <ArrowBack/>
+                    </IconButton>
+                    <React.Fragment>
+                        <Typography variant="h6" className={"text-truncate"}
+                                    style={{maxWidth: "5rem"}}>
+                            {
+                                props.folder.metaData.name || ""
+                            }
+                        </Typography>
+                        <div style={{flex: "1 1 auto"}}/>
+                        {
+                            props.folder.metaData.shared ? <IconButton><FolderShared/></IconButton> : null
+                        }
+                        <IconButton>
+                            <MoreVert/>
+                        </IconButton>
+                    </React.Fragment>
+                </Toolbar>
+            </AppBar>
+        }
+    </React.Fragment>
+);
+AppBarComponent.propTypes = {
+    handleFolderChange: PropTypes.func,
+    folder: PropTypes.object,
+    history: PropTypes.object,
+    embedded: PropTypes.bool.isRequired
+};
 const FolderView = (props) => {
     const [folder, setFolder] = React.useState(null);
     const [bottomSheet, setBottomSheet] = React.useState(false);
@@ -57,7 +94,7 @@ const FolderView = (props) => {
     const abortController = new AbortController();
     const handleFolderChange = async (id) => initAuth()
         .then(token => (setLoading(true), getFolderInfo(token, id, abortController))
-            .then((contents) => (setLoading(false), setFolder(null), setFolder(contents), history.push(`/folder/${id}`, previousFolders.push(id))))
+            .then((contents) => (setLoading(false), setFolder(null), setFolder(contents), props.embedded ? null : history.push(`/folder/${id}`), previousFolders.push(id)))
             .catch(e => null))
         .catch(e => null);
 
@@ -71,7 +108,7 @@ const FolderView = (props) => {
             dialog: true
         }), uploadFormDataAsFile(token, formData, folder.id, abortController)).then(res => {
             console.log(res);
-            handleFolderChange(window.location.pathname.split("/").slice(-1)[0]).then(setUploadingFiles({
+            handleFolderChange(props.embedded ? props.folderId : window.location.pathname.split("/").slice(-1)[0]).then(setUploadingFiles({
                 ...uploadingFiles,
                 dialog: false
             }));
@@ -83,7 +120,7 @@ const FolderView = (props) => {
     }, [uploadingFiles]);
 
     useEffect(() => {
-        handleFolderChange(window.location.pathname.split("/").slice(-1)[0]);
+        handleFolderChange(props.embedded ? props.folderId : window.location.pathname.split("/").slice(-1)[0]);
         return () => {
             abortController.abort()
         }
@@ -102,39 +139,44 @@ const FolderView = (props) => {
             .catch(() => console.log('clicked cancel')))
             .catch(e => console.log(e))
     };
+    React.useEffect(() => {
+        console.log(folder);
+    }, [folder]);
     return (
         <React.Fragment>
             {
                 folder ? (
                     <Grow in={true}>
                         <div className="FolderView">
-                            <AppBar color="paper" position={"sticky"}>
-                                <Toolbar>
-                                    <IconButton
-                                        onClick={() => {
-                                            //history.goBack();
-                                            folder.parents.length === 1 ? history.push('/home') : handleFolderChange(folder.immediateParent)
-                                        }}
-                                        edge="start" color="inherit"
-                                        aria-label="menu">
-                                        <ArrowBack/>
-                                    </IconButton>
-                                    <React.Fragment>
-                                        <Typography variant="h6" className={"text-truncate"} style={{maxWidth: "5rem"}}>
-                                            {
-                                                folder.metaData.name || ""
-                                            }
-                                        </Typography>
-                                        <div style={{flex: "1 1 auto"}}/>
-                                        {
-                                            folder.metaData.shared ? <IconButton><FolderShared/></IconButton> : null
-                                        }
-                                        <IconButton>
-                                            <MoreVert/>
+                            <AppBarComponent embedded={props.embedded} folder={folder} history={history}
+                                             handleFolderChange={handleFolderChange}/>
+                            {
+                                props.embedded ? null : <AppBar color="paper" position={"sticky"}>
+                                    <Toolbar>
+                                        <IconButton
+                                            onClick={() => folder.parents.length === 1 ? history.push('/home') : handleFolderChange(folder.immediateParent)}
+                                            edge="start" color="inherit"
+                                            aria-label="menu">
+                                            <ArrowBack/>
                                         </IconButton>
-                                    </React.Fragment>
-                                </Toolbar>
-                            </AppBar>
+                                        <React.Fragment>
+                                            <Typography variant="h6" className={"text-truncate"}
+                                                        style={{maxWidth: "5rem"}}>
+                                                {
+                                                    folder.metaData.name || ""
+                                                }
+                                            </Typography>
+                                            <div style={{flex: "1 1 auto"}}/>
+                                            {
+                                                folder.metaData.shared ? <IconButton><FolderShared/></IconButton> : null
+                                            }
+                                            <IconButton>
+                                                <MoreVert/>
+                                            </IconButton>
+                                        </React.Fragment>
+                                    </Toolbar>
+                                </AppBar>
+                            }
                             <React.Fragment>
                                 <React.Fragment>
                                     <div className={"px-2"}>
@@ -143,11 +185,16 @@ const FolderView = (props) => {
                                             <Typography variant={"caption"}
                                                         className={"pl-2"}>Folders</Typography> : null}
                                         <FoldersComponent folders={folder.folders}
-                                                          onClick={(id) => handleFolderChange(id)}/>
+                                                          onClick={(id) => props.embedded ? history.push(`/folder/${id}`) : handleFolderChange(id)}/>
                                         {folder.files.length ?
                                             <Typography variant={"caption"}
                                                         className={"pl-2"}>Files</Typography> : null}
-                                        <FilesComponent files={folder.files} handleFileDelete={() => {
+                                        <FilesComponent files={folder.files} handleFileDelete={(id) => {
+                                            setFolder({
+                                                ...folder,
+                                                files: [...folder.files.filter(file => file.id !== id)]
+                                            });
+                                            enqueueSnackbar("Deleted File");
                                         }} folder={{...folder, files: [], folders: []}}/>
                                     </div>
                                     {

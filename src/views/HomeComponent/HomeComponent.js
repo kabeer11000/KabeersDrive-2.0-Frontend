@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import './HomeComponent.css';
 import Container from "@material-ui/core/Container";
 import FilesComponent from "../../components/HomeSubComponents/FileCardComponent/FileCardComponent.lazy";
-import FoldersComponent from "../../components/HomeSubComponents/FolderCardComponent/FolderCardComponent.lazy";
 import {getQueryStringParams} from "../../functions/Misc";
 import {createNewFolder, getFolderById, getRecentFiles} from "../../functions/FilesFolders";
 import Typography from "@material-ui/core/Typography";
@@ -26,6 +25,7 @@ import useTheme from "@material-ui/core/styles/useTheme";
 import {useDialog} from 'muibox';
 import {useHistory} from "react-router-dom";
 import Grow from "@material-ui/core/Grow";
+import FolderView from "../../components/FolderView/FolderView.lazy";
 
 function TabPanel(props) {
     const {children, value, index, ...other} = props;
@@ -200,19 +200,7 @@ const HomeComponent = (props) => {
                         <TabPanel value={value} index={2} dir={theme.direction}>
                             <Container className={"px-1"}>
                                 {contents ? (
-                                    <div className={"px-2"}>
-                                        <br/>
-                                        {contents.folders.length ?
-                                            <Typography variant={"caption"}
-                                                        className={"pl-2"}>Folders</Typography> : null}
-                                        <FoldersComponent folders={contents.folders}
-                                                          onClick={(id) => history.push(`/folder/${id}`)}/>
-                                        {contents.files.length ?
-                                            <Typography variant={"caption"}
-                                                        className={"pl-2"}>Files</Typography> : null}
-                                        <FilesComponent files={contents.files} handleFileDelete={handleFileDelete}
-                                                        folder={{...contents, files: [], folders: []}}/>
-                                    </div>
+                                    <FolderView embedded={true} id={"b4000376114184b38e2f00e43b070a9fe239457d"}/>
                                 ) : null}
                             </Container>
                         </TabPanel>

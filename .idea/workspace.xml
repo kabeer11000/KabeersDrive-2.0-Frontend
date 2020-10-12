@@ -2,42 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="99fd5e60-508e-4d80-aaba-52189852b1d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/FileViewer/FileViewer.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/FileViewer/FileViewer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/FileViewer/FileViewer.lazy.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/FileViewer/FileViewer.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/FolderView/FolderView.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/FolderView/FolderView.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/FolderView/FolderView.lazy.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/FolderView/FolderView.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/HomeSubComponents/RecentFileCard/RecentFileCard.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/HomeSubComponents/RecentFileCard/RecentFileCard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/HomeSubComponents/RecentFileCard/RecentFileCard.lazy.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/HomeSubComponents/RecentFileCard/RecentFileCard.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/functions/Worker/createWorker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/HomeSubComponents/FileCardComponent/FileCardElement.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/HomeSubComponents/FileCardComponent/FileInfoDialog.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/HomeSubComponents/FileUploadingCardComponent/FileInfoDialog.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/EndPoints.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/EndPoints.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AppBarComponent/AppBarComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AppBarComponent/AppBarComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FileCardComponent/FileCardComponent.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomeSubComponents/FileCardComponent/FileCardComponent.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FileCardComponent/FileCardComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomeSubComponents/FileCardComponent/FileCardComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FileCardComponent/FileCardComponent.lazy.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomeSubComponents/FileCardComponent/FileCardComponent.lazy.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FileCardComponent/FileCardComponent.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomeSubComponents/FileCardComponent/FileCardComponent.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FileUploadingCardComponent/FileCardComponent.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomeSubComponents/FileUploadingCardComponent/FileCardComponent.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FileUploadingCardComponent/FileCardComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomeSubComponents/FileUploadingCardComponent/FileCardComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FileUploadingCardComponent/FileCardComponent.lazy.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomeSubComponents/FileUploadingCardComponent/FileCardComponent.lazy.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FileUploadingCardComponent/FileCardComponent.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomeSubComponents/FileUploadingCardComponent/FileCardComponent.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FolderCardComponent/FolderCardComponent.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomeSubComponents/FolderCardComponent/FolderCardComponent.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FolderCardComponent/FolderCardComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomeSubComponents/FolderCardComponent/FolderCardComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FolderCardComponent/FolderCardComponent.lazy.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomeSubComponents/FolderCardComponent/FolderCardComponent.lazy.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FolderCardComponent/FolderCardComponent.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomeSubComponents/FolderCardComponent/FolderCardComponent.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/FilesFolders.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/FilesFolders.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/IconDictionary.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/IconDictionary.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/Misc.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/Misc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FileViewer/FileViewer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FileViewer/FileViewer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FolderView/FolderView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FolderView/FolderView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HomeSubComponents/FileCardComponent/FileCardComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomeSubComponents/FileCardComponent/FileCardComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/functions/Auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/Auth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/HomeComponent/HomeComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/HomeComponent/HomeComponent.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +46,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/functions/Worker" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/HomeSubComponents/FileCardComponent" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -87,11 +59,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Projects\phpstormprojects\kabeersdrive\src\components\HomeSubComponents\FileCardComponent" />
       <recent name="E:\Projects\phpstormprojects\kabeersdrive\src\functions\Worker" />
       <recent name="E:\Projects\phpstormprojects\kabeersdrive\src\components" />
       <recent name="E:\Projects\phpstormprojects\kabeersdrive\public\scripts" />
       <recent name="E:\Projects\phpstormprojects\kabeersdrive\src" />
-      <recent name="E:\Projects\phpstormprojects\kabeersdrive\src\views" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Projects\phpstormprojects\kabeersdrive\src\components\HomeSubComponents" />
@@ -133,7 +105,7 @@
       <workItem from="1602101846957" duration="4393000" />
       <workItem from="1602235760936" duration="12830000" />
       <workItem from="1602279582075" duration="25671000" />
-      <workItem from="1602409690038" duration="27096000" />
+      <workItem from="1602409690038" duration="33038000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1601911759382</created>
@@ -149,7 +121,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602072720521</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Kafi Updates Hai">
+      <created>1602469360040</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1602469360040</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,7 +142,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="commit" />
     <MESSAGE value="Adding Tabs in home component" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding Tabs in home component" />
+    <MESSAGE value="Kafi Updates Hai" />
+    <option name="LAST_COMMIT_MESSAGE" value="Kafi Updates Hai" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -173,10 +153,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="275" y="22" key="#ESLint/0.0.1366.728@0.0.1366.728" timestamp="1601554935747" />
-    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1602072714714">
+    <state x="13" y="0" key="CommitChangelistDialog2" timestamp="1602469350398">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1602072714714" />
+    <state x="13" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1602469350398" />
     <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1602411868238">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -193,6 +173,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1602411868238" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1602469436172">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1602469436172" />
     <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1602279792259">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -201,10 +185,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="379" y="96" width="607" height="536" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1601646926319" />
-    <state x="339" y="162" width="672" height="677" key="run.anything.popup" timestamp="1602415757944">
+    <state x="339" y="162" width="672" height="677" key="run.anything.popup" timestamp="1602470637283">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="162" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1602415757944" />
+    <state x="339" y="162" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1602470637283" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1602322650024">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

@@ -57,9 +57,15 @@ const EmbeddedFileViewer = (props) => {
             return (
                 <React.Fragment>
                     <Container maxWidth={"xs"}>
-                        <video className={"w-100 h-100"}
-                               onLoad={props.onLoad}
-                               src={`http://drive.hosted-kabeersnetwork.unaux.com/docs-userfiles/${props.file.path}`}/>
+                        <div style={{
+                            transform: "translate(0%, 0%)",
+                            left: "50%",
+                            top: "50%"
+                        }}>
+                            <video className={"w-100 h-100"}
+                                   onLoad={props.onLoad}
+                                   src={`http://drive.hosted-kabeersnetwork.unaux.com/docs-userfiles/${props.file.path}`}/>
+                        </div>
                     </Container>
                 </React.Fragment>
             );

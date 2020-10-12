@@ -15,6 +15,7 @@ const cookies = {
     }
 };
 export const initAuth = async () => {
+    const abortController = new AbortController();
     let token = cookies.getCookie("token");
     if (!token) {
         window.location.href = endPoints.authRedirect;
@@ -23,7 +24,9 @@ export const initAuth = async () => {
 
     token = JSON.parse(token);
     if (Math.floor(((Date.now() - token.exp) / 1000) / 60) > 120) { // Two Hours
-        return await fetch(endPoints.refreshToken, {}, 5000).then(res => res.ok ? res.json() : null);
+        return await fetch(endPoints.refreshToken, {
+            signal: abortController.signal
+        }, 5000).then(res => res.ok ? res.json() : null);
     } // Expired
     return token.token; // Return Token
 };
