@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import './FolderCardComponent.css';
 import Grid from "@material-ui/core/Grid";
@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import {Delete, Folder, GetApp, MoreVert, OpenInNew, ScreenShare} from "@material-ui/icons";
+import {Delete, Folder, GetApp, Info, MoreVert, OpenInNew, ScreenShare} from "@material-ui/icons";
 import IconButton from "@material-ui/core/IconButton";
 import {pure} from "recompose";
 import {Link} from "react-router-dom";
@@ -20,11 +20,12 @@ import {downloadFile} from "../../../functions/Misc";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 import {changeFileLinkSharing} from "../../../functions/FilesFolders";
+import FolderInfoDialog from "./FolderInfoDialog";
 //                    <Skeleton variant="rect" width={210} height={118} />
 // <div style={{zIndex: 2, backgroundImage: "linear-gradient(to bottom, transparent, rgba(0,0,0,0.25))", minWidth: 210, width: 210, height: 118}} className={"rounded"}/>
 //
 
-const FolderCardComponent = pure((props) => {
+const FolderCardElement = pure((props) => {
     const isMobile = useMediaQuery(`@media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3)`);
     return (
         <Card className={`${isMobile ? "mx-0" : "mx-2 my-2"} py-0`}>
@@ -41,16 +42,17 @@ const FolderCardComponent = pure((props) => {
         </Card>
     );
 });
-FolderCardComponent.propTypes = {
+FolderCardElement.propTypes = {
     item: PropTypes.object.isRequired
 };
-FolderCardComponent.defaultProps = {};
+FolderCardElement.defaultProps = {};
 
 
 const FoldersComponent = (props) => {
     const [contents, setContents] = React.useState(props.folders);
     const [folderInfo, setFolderInfo] = React.useState(null);
     const [drawerOpen, setDrawerOpen] = React.useState(false);
+    const [folderDetailsDialog, setFolderDetailsDialog] = React.useState(false);
 
     const setCurrentFileInfo = (folder) => {
         setDrawerOpen(true);
@@ -67,18 +69,22 @@ const FoldersComponent = (props) => {
                 {
                     contents ? contents.map((folder, index) => (
                         <Grid sm={4} md={4} xs={12} item key={index}>
-                            <FolderCardComponent
+                            <FolderCardElement
                                 item={folder} onOptions={setCurrentFileInfo} onClick={props.onClick}/>
                         </Grid>)) : null
                 }
             </Grid>
+            {folderInfo ? (
+                <React.Fragment>
+                    <FolderInfoDialog open={folderDetailsDialog} handleClose={() => setFolderDetailsDialog(false)}
+                                      folder={folderInfo}/>
+                </React.Fragment>
+            ) : null}
             <Drawer
                 variant="temporary"
                 anchor={"bottom"}
                 onClose={handleDrawerClose}
-                onOpen={() => {
-                }}
-                ModalProps={{keepMounted: false}}
+                ModalProps={{keepMounted: true}}
                 open={drawerOpen}
             >
                 {
@@ -104,6 +110,10 @@ const FoldersComponent = (props) => {
                                     <ListItemIcon><Delete/></ListItemIcon>
                                     <ListItemText primary={"Delete"} secondary={`Delete ${folderInfo.name}`}/>
                                 </ListItem>
+                                <ListItem button onClick={() => setFolderDetailsDialog(true)}>
+                                    <ListItemIcon><Info/></ListItemIcon>
+                                    <ListItemText primary={"Details and Activity"}/>
+                                </ListItem>
                                 <Divider/>
                                 <ListItem>
                                     <ListItemIcon><ScreenShare/></ListItemIcon>
@@ -126,7 +136,7 @@ const FoldersComponent = (props) => {
 };
 FoldersComponent.propTypes = {};
 FoldersComponent.defaultProps = {};
-export default pure(FoldersComponent);
+export default memo(pure(FoldersComponent));
 /*
         {
             props.item.thumbnail ?

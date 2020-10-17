@@ -1,11 +1,9 @@
-import React, {useEffect} from 'react';
+import React, {memo, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import './FolderView.css';
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
-import {Add, ArrowBack, CloudUpload, Folder, FolderShared, MoreVert, PhotoCamera, Save} from "@material-ui/icons";
+import {Add, CloudUpload, Folder, PhotoCamera, Save} from "@material-ui/icons";
 import {initAuth} from "../../functions/Auth";
 import {createNewFolder, getFolderInfo, uploadFormDataAsFile} from "../../functions/FilesFolders";
 import {pure} from "recompose";
@@ -27,6 +25,8 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import {useSnackbar} from "notistack";
+import AppBarComponent from "./AppBarComponent";
+import {useTheme} from "@material-ui/core";
 
 const UploadingDialog = (props) => (
     <Dialog open={props.open} disableBackdropClick disableEscapeKeyDown>
@@ -45,52 +45,15 @@ UploadingDialog.propTypes = {
     folderName: PropTypes.string.isRequired,
     open: PropTypes.bool.isRequired,
 };
-const AppBarComponent = (props) => (
-    <React.Fragment>
-        {
-            props.embedded ? null : <AppBar color="paper" position={"sticky"}>
-                <Toolbar>
-                    <IconButton
-                        onClick={() => props.folder.parents.length === 1 ? history.push('/home') : props.handleFolderChange(props.folder.immediateParent)}
-                        edge="start" color="inherit"
-                        aria-label="menu">
-                        <ArrowBack/>
-                    </IconButton>
-                    <React.Fragment>
-                        <Typography variant="h6" className={"text-truncate"}
-                                    style={{maxWidth: "5rem"}}>
-                            {
-                                props.folder.metaData.name || ""
-                            }
-                        </Typography>
-                        <div style={{flex: "1 1 auto"}}/>
-                        {
-                            props.folder.metaData.shared ? <IconButton><FolderShared/></IconButton> : null
-                        }
-                        <IconButton>
-                            <MoreVert/>
-                        </IconButton>
-                    </React.Fragment>
-                </Toolbar>
-            </AppBar>
-        }
-    </React.Fragment>
-);
-AppBarComponent.propTypes = {
-    handleFolderChange: PropTypes.func,
-    folder: PropTypes.object,
-    history: PropTypes.object,
-    embedded: PropTypes.bool.isRequired
-};
 const FolderView = (props) => {
     const [folder, setFolder] = React.useState(null);
     const [bottomSheet, setBottomSheet] = React.useState(false);
     const [uploadingFiles, setUploadingFiles] = React.useState({files: [], dialog: false});
     const [loading, setLoading] = React.useState(false);
-    const folderDialog = useDialog();
     const history = useHistory();
     const previousFolders = [];
     const {enqueueSnackbar, closeSnackbar} = useSnackbar();
+    const folderDialog = useDialog();
     const abortController = new AbortController();
     const handleFolderChange = async (id) => initAuth()
         .then(token => (setLoading(true), getFolderInfo(token, id, abortController))
@@ -107,7 +70,6 @@ const FolderView = (props) => {
             ...uploadingFiles,
             dialog: true
         }), uploadFormDataAsFile(token, formData, folder.id, abortController)).then(res => {
-            console.log(res);
             handleFolderChange(props.embedded ? props.folderId : window.location.pathname.split("/").slice(-1)[0]).then(setUploadingFiles({
                 ...uploadingFiles,
                 dialog: false
@@ -116,7 +78,6 @@ const FolderView = (props) => {
             ...uploadingFiles,
             dialog: false
         }))));
-
     }, [uploadingFiles]);
 
     useEffect(() => {
@@ -139,44 +100,23 @@ const FolderView = (props) => {
             .catch(() => console.log('clicked cancel')))
             .catch(e => console.log(e))
     };
+    const theme = useTheme();
+    const transitionDuration = {
+        enter: theme.transitions.duration.enteringScreen,
+        exit: theme.transitions.duration.leavingScreen,
+    };
     React.useEffect(() => {
         console.log(folder);
-    }, [folder]);
+    });
     return (
         <React.Fragment>
             {
                 folder ? (
                     <Grow in={true}>
                         <div className="FolderView">
-                            <AppBarComponent embedded={props.embedded} folder={folder} history={history}
-                                             handleFolderChange={handleFolderChange}/>
-                            {
-                                props.embedded ? null : <AppBar color="paper" position={"sticky"}>
-                                    <Toolbar>
-                                        <IconButton
-                                            onClick={() => folder.parents.length === 1 ? history.push('/home') : handleFolderChange(folder.immediateParent)}
-                                            edge="start" color="inherit"
-                                            aria-label="menu">
-                                            <ArrowBack/>
-                                        </IconButton>
-                                        <React.Fragment>
-                                            <Typography variant="h6" className={"text-truncate"}
-                                                        style={{maxWidth: "5rem"}}>
-                                                {
-                                                    folder.metaData.name || ""
-                                                }
-                                            </Typography>
-                                            <div style={{flex: "1 1 auto"}}/>
-                                            {
-                                                folder.metaData.shared ? <IconButton><FolderShared/></IconButton> : null
-                                            }
-                                            <IconButton>
-                                                <MoreVert/>
-                                            </IconButton>
-                                        </React.Fragment>
-                                    </Toolbar>
-                                </AppBar>
-                            }
+                            {props.embedded ? null :
+                                <AppBarComponent folder={folder} history={history}
+                                                 handleFolderChange={handleFolderChange}/>}
                             <React.Fragment>
                                 <React.Fragment>
                                     <div className={"px-2"}>
@@ -184,18 +124,26 @@ const FolderView = (props) => {
                                         {folder.folders.length ?
                                             <Typography variant={"caption"}
                                                         className={"pl-2"}>Folders</Typography> : null}
-                                        <FoldersComponent folders={folder.folders}
+                                        <FoldersComponent owner={folder.owner} folders={folder.folders}
                                                           onClick={(id) => props.embedded ? history.push(`/folder/${id}`) : handleFolderChange(id)}/>
                                         {folder.files.length ?
                                             <Typography variant={"caption"}
                                                         className={"pl-2"}>Files</Typography> : null}
-                                        <FilesComponent files={folder.files} handleFileDelete={(id) => {
-                                            setFolder({
-                                                ...folder,
-                                                files: [...folder.files.filter(file => file.id !== id)]
-                                            });
-                                            enqueueSnackbar("Deleted File");
-                                        }} folder={{...folder, files: [], folders: []}}/>
+                                        <FilesComponent
+                                            handleFileDelete={(id) => {
+                                                setFolder({
+                                                    ...folder,
+                                                    files: [...folder.files.filter(file => file.id !== id)]
+                                                });
+                                                enqueueSnackbar("Deleted File");
+                                            }}
+                                            handleBulkFileDelete={(files) => {
+                                                setFolder({
+                                                    ...folder,
+                                                    files: files
+                                                });
+                                            }} folder={folder}
+                                        />
                                     </div>
                                     {
                                         !folder.folders.length && !folder.files.length ? (
@@ -225,72 +173,94 @@ const FolderView = (props) => {
                     </Grow>
                 ) : null
             }
-            <Fab onClick={() => setBottomSheet(!bottomSheet)} variant={"extended"}
-                 size="medium"
-                 color="primary"
-                 style={{
-                     position: "fixed",
-                     bottom: "2rem",
-                     right: "0.5rem"
-                 }}>
-                <Add/> New
-            </Fab>
-            <SwipeableDrawer
-                PaperProps={{
-                    style: {
-                        //borderRadius: "0.5rem 0.5rem 0 0"
-                    }
-                }}
-                ModalProps={{
-                    keepMounted: true
-                }}
-                className={"rounded-circle"}
-                anchor={"bottom"}
-                open={bottomSheet}
-                onClick={() => setBottomSheet(!bottomSheet)}
-                onClose={() => setBottomSheet(!bottomSheet)}
-                onOpen={() => setBottomSheet(!bottomSheet)}
-            >
-                <ListItem>
-                    <ListItemIcon><Add/></ListItemIcon>
-                    <ListItemText>
-                        <Typography>Create New</Typography>
-                    </ListItemText>
-                </ListItem>
-                <Divider/>
-                <List>
-                    <ListItem button onClick={() => newFolderDialog()}>
-                        <ListItemIcon><Folder/></ListItemIcon>
-                        <ListItemText primary={"Folder"} secondary={`Create New Folder`}/>
-                    </ListItem>
-                    <ListItem button onClick={() => {
-                        const input = document.createElement('input');
-                        input.type = 'file';
-                        input.multiple = true;
-                        input.onchange = e => setUploadingFiles([...e.target.files]);
-                        input.click();
-                    }}>
-                        <ListItemIcon><CloudUpload/></ListItemIcon>
-                        <ListItemText primary={"Upload File"} secondary={`Upload New File`}/>
-                    </ListItem>
-                    <ListItem button onClick={() => {
-                        const input = document.createElement('input');
-                        input.type = 'file';
-                        input.accept = "image/*";
-                        input.capture = "environment";
-                        input.multiple = true;
-                        input.onchange = e => setUploadingFiles([...e.target.files]);
-                        input.click();
-                    }}>
-                        <ListItemIcon><PhotoCamera/></ListItemIcon>
-                        <ListItemText primary={"Scan"} secondary={`Scan New Document`}/>
-                    </ListItem>
-                </List>
-            </SwipeableDrawer>
-            <Backdrop open={loading} style={{zIndex: 8}}>
-                <CircularProgress/>
-            </Backdrop>
-            <UploadingDialog fileCount={25} open={uploadingFiles.dialog} folderName={"My Drive"}/>
+            <React.Fragment>
+                {
+                    folder && folder.owner === window.user.user_id ? (
+                        <React.Fragment>
+                            <Zoom
+                                in={true}
+                                timeout={transitionDuration}
+                                style={{
+                                    transitionDelay: `${transitionDuration.exit}ms`,
+                                }}
+                                mountOnEnter
+                            >
+                                <Fab onClick={() => setBottomSheet(!bottomSheet)} variant={"extended"}
+                                     size="medium"
+                                     color="primary"
+                                     style={{
+                                         position: "fixed",
+                                         bottom: "3.5rem",
+                                         right: "0.5rem"
+                                     }}>
+                                    <Add/> New
+                                </Fab>
+                            </Zoom>
+                            <SwipeableDrawer
+                                PaperProps={{
+                                    style: {
+                                        //borderRadius: "0.5rem 0.5rem 0 0"
+                                    }
+                                }}
+                                ModalProps={{
+                                    keepMounted: true
+                                }}
+                                className={"rounded-circle"}
+                                anchor={"bottom"}
+                                open={bottomSheet}
+                                onClick={() => setBottomSheet(!bottomSheet)}
+                                onClose={() => setBottomSheet(!bottomSheet)}
+                                onOpen={() => setBottomSheet(!bottomSheet)}
+                            >
+                                <ListItem>
+                                    <ListItemIcon><Add/></ListItemIcon>
+                                    <ListItemText>
+                                        <Typography>Create New</Typography>
+                                    </ListItemText>
+                                </ListItem>
+                                <Divider/>
+                                <List>
+                                    <ListItem button onClick={() => newFolderDialog()}>
+                                        <ListItemIcon><Folder/></ListItemIcon>
+                                        <ListItemText primary={"Folder"} secondary={`Create New Folder`}/>
+                                    </ListItem>
+                                    <ListItem button onClick={() => {
+                                        const input = document.createElement('input');
+                                        input.type = 'file';
+                                        input.multiple = true;
+                                        input.onchange = e => setUploadingFiles([...e.target.files]);
+                                        input.click();
+                                    }}>
+                                        <ListItemIcon><CloudUpload/></ListItemIcon>
+                                        <ListItemText primary={"Upload File"} secondary={`Upload New File`}/>
+                                    </ListItem>
+                                    <ListItem button onClick={() => {
+                                        const input = document.createElement('input');
+                                        input.type = 'file';
+                                        input.accept = "image/*";
+                                        input.capture = "environment";
+                                        input.multiple = true;
+                                        input.onchange = e => setUploadingFiles([...e.target.files]);
+                                        input.click();
+                                    }}>
+                                        <ListItemIcon><PhotoCamera/></ListItemIcon>
+                                        <ListItemText primary={"Scan"} secondary={`Scan New Document`}/>
+                                    </ListItem>
+                                </List>
+                            </SwipeableDrawer>
+                            <Backdrop open={loading} style={{zIndex: 8}}>
+                                <CircularProgress/>
+                            </Backdrop>
+                            {
+                                uploadingFiles.dialog && uploadingFiles ? (
+                                    <UploadingDialog fileCount={uploadingFiles.length || ""}
+                                                     open={uploadingFiles.dialog}
+                                                     folderName={"My Drive"}/>) : null
+                            }
+                        </React.Fragment>
+                    ) : null
+                }
+            </React.Fragment>
         </React.Fragment>
     );
 };
@@ -299,4 +269,4 @@ FolderView.propTypes = {};
 
 FolderView.defaultProps = {};
 
-export default pure(FolderView);
+export default memo(pure(FolderView));

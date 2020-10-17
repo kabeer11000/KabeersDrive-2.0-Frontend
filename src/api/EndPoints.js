@@ -3,7 +3,8 @@ export const hostName = `${window.location.protocol}//${window.location.hostname
 export const Proxy = `https://kabeersmusic.herokuapp.com/proxy/`;
 
 export const endPoints = {
-    getFolderById: id => `${hostName}/api/get/folder/${id ? id : "b4000376114184b38e2f00e43b070a9fe239457d"}`,
+    getFolderById: id => `${hostName}/api/get/folder/${id ? id : window.user.user_id}`,
+    getSharedFolderById: id => `${hostName}/api/get/shared/folder/${id}`,
     getFolderByFake: id => `https://raw.githubusercontent.com/kabeer11000/sample-response/master/Drive/folder.json`,
     changeFileSharing: (id) => `${hostName}/api/sharing/file/${id}`,
     changeFileSharingFake: (id, method) => `https://cdn.jsdelivr.net/gh/kabeer11000/sample-response@master/Drive/folder.json`,
@@ -24,4 +25,16 @@ export const endPoints = {
     getRecentFiles: (n = null) => `${hostName}/api/get/recent/file/${n ? n : ""}`,
     getFileDetailsById: (id) => `${hostName}/api/get/file/${id}`,
     createNewFolder: () => `${hostName}/api/create/new/folder`,
+
+    getUserData: `${hostName}/auth/user/data`,
+
+
+    filePath: `http://kabeer11000.mzzhost.com/`,
+//    filePathReadFile: (path) => `http://kabeer11000.mzzhost.com/index.php?i=${encodeURIComponent(path)}`
+    filePathReadFile: (path) => `https://vector-kabeersnetwork.000webhostapp.com/view-text.php?i=${path}`,
+    filePathRaw: (path) => `https://vector-kabeersnetwork.000webhostapp.com/drive-hosted/${path}`,
+
+
+    bulkDeleteFiles: `${hostName}/api/delete/bulk/file`,
+    deleteOneFile: (id) => `${hostName}/api/delete/file/${id}`,
 };

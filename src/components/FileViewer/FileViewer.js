@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import Dialog from "@material-ui/core/Dialog";
 import Slide from "@material-ui/core/Slide";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import {initAuth} from "../../functions/Auth";
+import {checkTokenExists, initAuth} from "../../functions/Auth";
 import {getFileInfoById} from "../../functions/FilesFolders";
 import DialogContent from "@material-ui/core/DialogContent";
 import {Document, Page} from 'react-pdf';
@@ -17,6 +17,8 @@ import Container from "@material-ui/core/Container";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import {HideOnScroll} from "../AppBarComponent/AppBarComponent";
 import PDFViewer from '@phuocng/react-pdf-viewer';
+import {endPoints} from "../../api/EndPoints";
+import {useAsync} from "react-async";
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -31,7 +33,17 @@ const useStyles = makeStyles((theme) => ({
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="left" ref={ref} {...props} />;
 });
+const fetchCode = async ({url}, {signal}) => await fetch(url, {signal}).then(res => res.text());
 
+const CodeBlock = ({url}) => {
+    const {data, error} = useAsync({
+        promiseFn: fetchCode,
+        url,
+    });
+    return <code>
+        <pre style={{wordWrap: "break-word", whiteSpace: "pre-wrap"}}>{error ? error.message : data}</pre>
+    </code>;
+};
 const EmbeddedFileViewer = (props) => {
     switch (props.file.type) {
         case "image":
@@ -47,7 +59,7 @@ const EmbeddedFileViewer = (props) => {
                             loading={"lazy"}
                             className={"w-100 h-100"}
                             //src={"https://images.unsplash.com/photo-1602039439011-5ca16c81bd85?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"}
-                            src={`http://drive.hosted-kabeersnetwork.unaux.com/docs-userfiles/${props.file.path}`}
+                            src={`${endPoints.filePathReadFile(props.file.path)}`}
                             alt={props.file.name}
                         />
                     </div>
@@ -64,7 +76,7 @@ const EmbeddedFileViewer = (props) => {
                         }}>
                             <video className={"w-100 h-100"}
                                    onLoad={props.onLoad}
-                                   src={`http://drive.hosted-kabeersnetwork.unaux.com/docs-userfiles/${props.file.path}`}/>
+                                   src={endPoints.filePathReadFile(props.file.path)}/>
                         </div>
                     </Container>
                 </React.Fragment>
@@ -74,7 +86,7 @@ const EmbeddedFileViewer = (props) => {
                 <React.Fragment>
                     <Container maxWidth={"xs"}>
                         <PDFViewer
-                            fileUrl={`http://drive.hosted-kabeersnetwork.unaux.com/user-files/${props.file.path}`}/>
+                            fileUrl={endPoints.filePathReadFile(props.file.path)}/>
                     </Container>
                 </React.Fragment>
             );
@@ -83,15 +95,38 @@ const EmbeddedFileViewer = (props) => {
                 <React.Fragment>
                     <Container maxWidth={"xs"} style={{height: "100vh", width: "100vw"}}>
                         <Document
-                            file={`http://drive.hosted-kabeersnetwork.unaux.com/user-files/${props.file.path}`}
+                            file={endPoints.filePathReadFile(props.file.path)}
                         >
                             <Page pageNumber={0}/>
                         </Document>
                     </Container>
                 </React.Fragment>
             );
+        case "text":
+            return (
+                <React.Fragment>
+                    <Container maxWidth={"md"}>
+                        <CodeBlock url={endPoints.filePathReadFile(props.file.path)}/>
+                    </Container>
+                </React.Fragment>
+            );
+        case "code":
+            return (
+                <React.Fragment>
+                    <Container maxWidth={"md"}>
+                        <CodeBlock url={endPoints.filePathReadFile(props.file.path)}/>
+                    </Container>
+                </React.Fragment>
+            );
         default:
-            return null
+            return (
+                <React.Fragment>
+                    <Container maxWidth={"md"}>
+                        <CodeBlock url={endPoints.filePathReadFile(props.file.path)}/>
+                    </Container>
+                </React.Fragment>
+            );
+
     }
 };
 const FileViewer = (props) => {
@@ -107,27 +142,27 @@ const FileViewer = (props) => {
         history.goBack();
     };
     useEffect(() => {
-        initAuth()
+        checkTokenExists() ? initAuth()
             .then(token => getFileInfoById(token, abortController, fileId)
                 .then(file => setFile(file))
                 .catch(e => history.goBack()))
-            .catch(e => null)
+            .catch(e => null) : alert("Not Loggedin");
+
+
     }, []);
     useEffect(() => {
         console.log(file);
     }, [file]);
     return (
-        <div style={{backgroundColor: "black"}}>
+        <div>
             {file ? (
                 <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}
-                        style={{backgroundColor: "black"}}
                         PaperProps={{
                             className: "bg-transparent",
                             backgroundColor: "transparent"
                         }}>
                     <HideOnScroll>
-                        <AppBar position="static" elevation={2} className={"bg-transparent"}
-                                style={{backgroundColor: "black"}}>
+                        <AppBar position="static" elevation={2} className={"bg-transparent"}>
                             <Toolbar>
                                 <IconButton onClick={() => {
                                     history.goBack();
@@ -145,7 +180,7 @@ const FileViewer = (props) => {
                             <LinearProgress variant={"indeterminate"}/>
                         </AppBar>
                     </HideOnScroll>
-                    <DialogContent className={"bg-transparent"} style={{backgroundColor: "black"}}>
+                    <DialogContent className={"bg-transparent"}>
                         <EmbeddedFileViewer file={file} onLoad={() => {
                         }}/>
                     </DialogContent>

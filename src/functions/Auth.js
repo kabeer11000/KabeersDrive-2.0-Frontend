@@ -1,4 +1,6 @@
 import {endPoints} from "../api/EndPoints";
+import {storageIndex} from "./StorageIndex";
+import AfterAuthFunctions from "./AfterAuthFunctions";
 
 const cookies = {
     getCookie(e) {
@@ -14,14 +16,14 @@ const cookies = {
         document.cookie = e + "=" + t + ";" + r + ";path=/";
     }
 };
-export const initAuth = async () => {
+export const checkTokenExists = () => !!cookies.getCookie("token");
+export const initAuth = async (input, init) => {
     const abortController = new AbortController();
     let token = cookies.getCookie("token");
     if (!token) {
-        window.location.href = endPoints.authRedirect;
-        return new Error("Failed to Auth, Redirecting");
+        return window.location.href = endPoints.authRedirect;
+        //return new Error("Failed to Auth, Redirecting");
     }
-
     token = JSON.parse(token);
     if (Math.floor(((Date.now() - token.exp) / 1000) / 60) > 120) { // Two Hours
         return await fetch(endPoints.refreshToken, {
@@ -32,7 +34,6 @@ export const initAuth = async () => {
 };
 
 (async () => {
-    /*
     if (!cookies.getCookie("user_data_token")) return window.location.href = endPoints.authRedirect;
     if (localStorage.getItem(storageIndex.userData) === null || undefined) return fetch(endPoints.getUserData, {
         headers: new Headers({
@@ -44,6 +45,4 @@ export const initAuth = async () => {
         .catch(e => console.log(e));
     else await AfterAuthFunctions();
     //Every thing is fine joe
-
-     */
 })();

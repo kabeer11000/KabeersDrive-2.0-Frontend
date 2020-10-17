@@ -11,7 +11,7 @@ import Tabs from "@material-ui/core/Tabs";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import * as PropTypes from "prop-types";
 import green from "@material-ui/core/colors/green";
-
+import {pure} from "recompose";
 import clsx from 'clsx';
 import SwipeableViews from 'react-swipeable-views';
 import Tab from '@material-ui/core/Tab';
@@ -50,12 +50,16 @@ TabPanel.propTypes = {
     value: PropTypes.any.isRequired,
 };
 
-function a11yProps(index) {
-    return {
-        id: `action-tab-${index}`,
-        'aria-controls': `action-tabpanel-${index}`,
-    };
-}
+const dict = {
+    "/recents": 0,
+    "/shared": 1,
+    "/my-drive": 2,
+};
+const a11yProps = (index) => ({
+    //value: dict[index],
+    id: `action-tab-${index}`,
+    'aria-controls': `action-tabpanel-${index}`,
+});
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -83,7 +87,6 @@ const HomeComponent = (props) => {
     const abortController = new AbortController();
     const [contents, setContents] = React.useState(null);
     const [recent, setRecents] = React.useState(null);
-
     useEffect(() => {
         initAuth().then(token => {
             getRecentFiles(token, abortController, 10).then(recent => setRecents(recent)).catch(e => null);
@@ -94,13 +97,14 @@ const HomeComponent = (props) => {
             abortController.abort();
         }
     }, []);
-    const handleFileDelete = (id) => {
-        setContents({...contents, files: contents.files.filter(file => file.id === id)});
-    };
+    const handleFileDelete = (id) => setContents({...contents, files: contents.files.filter(file => file.id === id)});
+
 
     const classes = useStyles();
     const theme = useTheme();
-    const [value, setValue] = React.useState(0);
+    console.log(window.location.pathname);
+    const [value, setValue] = React.useState(dict[window.location.pathname]);
+
     const folderDialog = useDialog();
     const history = useHistory();
     const newFolderDialog = () => {
@@ -124,6 +128,7 @@ const HomeComponent = (props) => {
     const handleChangeIndex = (index) => {
         setValue(index);
     };
+
 
     const transitionDuration = {
         enter: theme.transitions.duration.enteringScreen,
@@ -156,7 +161,7 @@ const HomeComponent = (props) => {
     return (
         <Grow in={true}>
             <React.Fragment>
-                <AppBar position="sticky" style={{marginTop: '4rem', zIndex: 2, backgroundColor: "#303030"}}
+                <AppBar position="sticky" style={{marginTop: '0rem', zIndex: 2, backgroundColor: "#303030"}}
                         color="paper">
                     <Tabs
                         value={value}
@@ -184,11 +189,12 @@ const HomeComponent = (props) => {
                             {
                                 recent && recent.files ? (
                                     <React.Fragment>
-                                        <FilesComponent files={recent.files} handleFileDelete={handleFileDelete}
+                                        <FilesComponent handleFileDelete={handleFileDelete}
                                                         folder={{
+                                                            owner: window.user.user_id,
                                                             metaData: {
                                                                 name: "My Drive"
-                                                            }, files: [], folders: []
+                                                            }, files: recent.files, folders: []
                                                         }} recent={true}/>
                                     </React.Fragment>
                                 ) : null
@@ -197,11 +203,9 @@ const HomeComponent = (props) => {
                         <TabPanel value={value} index={1} dir={theme.direction}>
                             Item Two
                         </TabPanel>
-                        <TabPanel value={value} index={2} dir={theme.direction}>
-                            <Container className={"px-1"}>
-                                {contents ? (
-                                    <FolderView embedded={true} id={"b4000376114184b38e2f00e43b070a9fe239457d"}/>
-                                ) : null}
+                        <TabPanel value={value} index={2} dir={theme.direction} style={{minHeight: "100vh"}}>
+                            <Container className={"px-0"} style={{minHeight: "100vh"}}>
+                                <FolderView embedded={true} id={window.user.user_id}/>
                             </Container>
                         </TabPanel>
                     </SwipeableViews>
@@ -231,7 +235,7 @@ HomeComponent.propTypes = {};
 
 HomeComponent.defaultProps = {};
 
-export default HomeComponent;
+export default React.memo(pure(HomeComponent));
 /*
                     <Typography variant={"overline"}>
                         {

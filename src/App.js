@@ -16,6 +16,7 @@ import IconButton from "@material-ui/core/IconButton";
 import FolderView from "./components/FolderView/FolderView.lazy";
 import {DialogProvider} from "muibox";
 import {SnackbarProvider} from "notistack";
+import SharedFolderView from "./components/SharedFolderView/SharedFolderView.lazy";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -71,19 +72,21 @@ const App = (props) => {
                 <Router>
                     <DrawerComponent {...stateFunctions}>
                         <React.Fragment>
-                            <Route path={["/", "/home"]} exact={true}
+                            <Route path={["/", "/home", "/recents", "/my-drive", "/shared"]} exact={true}
                                    render={() => <AppBarComponent {...stateFunctions}/>}/>
                             <DialogProvider>
-                                <Route exact path={["/", "/home"]} component={HomeComponent}/>
+                                <Route exact path={["/", "/home", "/recents", "/my-drive", "/shared"]}
+                                       component={HomeComponent}/>
                                 <Route exact path={["/upload"]} component={UploadComponent}/>
                                 <Route exact path={["/view/:id"]} component={FileViewer}/>
                                 <Route exact path={"/folder/:id"} component={FolderView}/>
+                                <Route exact path={"/share/:id"} component={SharedFolderView}/>
                             </DialogProvider>
+                            <UploadComponent onClose={handleCastDialogClose} open={castDialogOpen}/>
+                            <IconButton className={"d-none"} onClick={() => setCastDialogOpen(!castDialogOpen)}>
+                                <CloudUpload/>
+                            </IconButton>
                         </React.Fragment>
-                        <UploadComponent onClose={handleCastDialogClose} open={castDialogOpen}/>
-                        <IconButton className={"d-none"} onClick={() => setCastDialogOpen(!castDialogOpen)}>
-                            <CloudUpload/>
-                        </IconButton>
                     </DrawerComponent>
                 </Router>
             </SnackbarProvider>

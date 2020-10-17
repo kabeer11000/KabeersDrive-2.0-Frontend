@@ -48,6 +48,17 @@ export const changeFileLinkSharing = async (id, method, abortController = new Ab
     }),
     signal: abortController.signal
 }));
+export const deleteManyFiles = async (ids, abortController = new AbortController()) => initAuth().then(token => fetch(endPoints.bulkDeleteFiles, {
+    method: "POST",
+    headers: new Headers({
+        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+        "Authorization": `Bearer ${token}`,
+    }),
+    body: makeBody({
+        ids: ids.join("|")
+    }),
+    signal: abortController.signal
+}));
 export const searchUserFiles = async (q, folderId = null) => folderId ? fetch(endPoints.userGetAllContentsFolder(folderId), {})
     .then(res => res.json())
     .then((res) => ({
@@ -77,4 +88,13 @@ export const getFolderInfo = async (token, id, abortController = new AbortContro
     }),
     signal: abortController.signal
 }).then(value => value.json());
+export const fileDeleteOne = async () => {
+};
+// export const fileDeleteOne = async (id, abortController = new AbortController()) => await initAuth().then(async token => await fetch(endPoints.deleteOneFile(id), {
+//     method: "POST",
+//     headers: new Headers({
+//         "Authorization": `Bearer ${token}`
+//     }),
+//     signal: abortController.signal
+// }).then(value => value.json()));
 //searchUserFiles("pdf").then((v) => alert(JSON.stringify(v)));

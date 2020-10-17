@@ -69,7 +69,7 @@ const AppBarComponent = (props) => {
     return (
         <React.Fragment>
             <HideOnScroll style={{zIndex: "5"}}>
-                <AppBar elevation={0} className={"bg-transparent"}>
+                <AppBar elevation={0} className={"bg-transparent"} position={"sticky"}>
                     <div className={"d-flex justify-content-center"}>
                         <Paper component="form" className={`${classes.root}  mt-3`} style={{
                             top: "50%",
